@@ -42,6 +42,7 @@ class Servico extends BuilderAbstract
     private $tributavel;
     private $responsavelRetencao;
     private $ibpt;
+    private $codigoNbs;
 
 
     public function setCnae($cnae)
@@ -253,6 +254,16 @@ class Servico extends BuilderAbstract
     public function getIbpt()
     {
         return $this->ibpt;
+    }
+
+    public function setCodigoNbs($codigoNbs)
+    {
+        $this->codigoNbs = $codigoNbs;
+    }
+
+    public function getCodigoNbs()
+    {
+        return $this->codigoNbs;
     }
 
     public function validate()
