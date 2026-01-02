@@ -6,13 +6,13 @@ use TecnoSpeed\Plugnotas\Abstracts\BuilderAbstract;
 
 class Valores extends BuilderAbstract
 {
-    private float $baseCalculo;
-    private float $aliquotaIbsMunicipal;
-    private float $aliquotaIbsEstadual;
-    private float $aliquotaCbs;
-    private float $valorIbsMunicipal;
-    private float $valorIbsEstadual;
-    private float $valorCbs;
+    private float $baseCalculo = 0.0;
+    private float $aliquotaIbsMunicipal = 0.0;
+    private float $aliquotaIbsEstadual = 0.0;
+    private float $aliquotaCbs = 0.0;
+    private float $valorIbsMunicipal = 0.0;
+    private float $valorIbsEstadual = 0.0;
+    private float $valorCbs = 0.0;
     private Operacao $operacao;
     private TributacaoCbs $tributacao;
     private ResumoCbs $resumo;

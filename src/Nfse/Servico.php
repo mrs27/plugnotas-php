@@ -44,7 +44,7 @@ class Servico extends BuilderAbstract
     private $responsavelRetencao;
     private $ibpt;
     private $codigoNbs;
-    private $ibsCbs;
+    private $ibscbs;
 
 
     public function setCnae($cnae)
@@ -322,8 +322,8 @@ class Servico extends BuilderAbstract
         if (array_key_exists('ibpt', $data)) {
             $data['ibpt'] = Ibpt::fromArray($data['ibpt']);
         }
-        if (array_key_exists('ibsCbs', $data)) {
-            $data['ibsCbs'] = IbsCbs::fromArray($data['ibsCbs']);
+        if (array_key_exists('ibscbs', $data)) {
+            $data['ibscbs'] = IbsCbs::fromArray($data['ibscbs']);
         }
 
         return Hydrate::toObject(Servico::class, $data);
@@ -331,12 +331,12 @@ class Servico extends BuilderAbstract
 
     public function getIbsCbs()
     {
-        return $this->ibsCbs;
+        return $this->ibscbs;
     }
 
-    public function setIbsCbs(IbsCbs $ibsCbs): self
+    public function setIbsCbs(IbsCbs $ibscbs): self
     {
-        $this->ibsCbs = $ibsCbs;
+        $this->ibscbs = $ibscbs;
 
         return $this;
     }
