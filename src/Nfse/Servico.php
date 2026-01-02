@@ -16,6 +16,7 @@ use TecnoSpeed\Plugnotas\Nfse\Servico\Obra;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Retencao;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Valor;
 use TecnoSpeed\Plugnotas\Nfse\Servico\Ibpt;
+use TecnoSpeed\Plugnotas\Nfse\Servico\IbsCbs;
 use TecnoSpeed\Plugnotas\Traits\Communication;
 
 class Servico extends BuilderAbstract
@@ -43,6 +44,7 @@ class Servico extends BuilderAbstract
     private $responsavelRetencao;
     private $ibpt;
     private $codigoNbs;
+    private $ibsCbs;
 
 
     public function setCnae($cnae)
@@ -173,7 +175,7 @@ class Servico extends BuilderAbstract
     }
 
     public function setObra(Obra $obra)
-    {  
+    {
         $this->obra = $obra;
     }
 
@@ -232,14 +234,14 @@ class Servico extends BuilderAbstract
         return $this->tributavel;
     }
 
-    public function setResponsavelRetencao($responsavelRetencao){
-    if (!v::in([1,2])->validate($responsavelRetencao)) {
-        throw new ValidationError(
-            'Responsável Retencao inválido.'
-        );
-    }
-    $this->responsavelRetencao = $responsavelRetencao;
- 
+    public function setResponsavelRetencao($responsavelRetencao)
+    {
+        if (!v::in([1, 2])->validate($responsavelRetencao)) {
+            throw new ValidationError(
+                'Responsável Retencao inválido.'
+            );
+        }
+        $this->responsavelRetencao = $responsavelRetencao;
     }
 
     public function getResponsavelRetencao()
@@ -269,7 +271,7 @@ class Servico extends BuilderAbstract
     public function validate()
     {
         $data = $this->toArray();
-        if(
+        if (
             !v::allOf(
                 v::keyNested('codigo'),
                 v::keyNested('cnae'),
@@ -320,7 +322,22 @@ class Servico extends BuilderAbstract
         if (array_key_exists('ibpt', $data)) {
             $data['ibpt'] = Ibpt::fromArray($data['ibpt']);
         }
+        if (array_key_exists('ibsCbs', $data)) {
+            $data['ibsCbs'] = IbsCbs::fromArray($data['ibsCbs']);
+        }
 
         return Hydrate::toObject(Servico::class, $data);
+    }
+
+    public function getIbsCbs()
+    {
+        return $this->ibsCbs;
+    }
+
+    public function setIbsCbs(IbsCbs $ibsCbs): self
+    {
+        $this->ibsCbs = $ibsCbs;
+
+        return $this;
     }
 }
