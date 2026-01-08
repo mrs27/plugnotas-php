@@ -329,12 +329,13 @@ class Servico extends BuilderAbstract
         return Hydrate::toObject(Servico::class, $data);
     }
 
-    public function getIbsCbs()
+    
+    public function getIbscbs()
     {
         return $this->ibscbs;
     }
 
-    public function setIbsCbs(IbsCbs $ibscbs): self
+    public function setIbscbs($ibscbs): self
     {
         $this->ibscbs = $ibscbs;
 

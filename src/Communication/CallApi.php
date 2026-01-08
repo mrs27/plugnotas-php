@@ -78,8 +78,9 @@ class CallApi
 
             return ResponseObject::parse($response);
         } catch (ClientException $ce) {
-            $response = $ce->getResponse();
-            return ResponseObject::parse($response);
+            throw new \Exception("Erro ao conectar na API PlugNotas: " . $ce->getMessage(), $ce->getCode());
+            //$response = $ce->getResponse();
+            //return ResponseObject::parse($response);
         }
     }
 

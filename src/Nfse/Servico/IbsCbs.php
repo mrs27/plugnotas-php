@@ -6,6 +6,7 @@ use TecnoSpeed\Plugnotas\Abstracts\BuilderAbstract;
 use TecnoSpeed\Plugnotas\Error\ValidationError;
 use TecnoSpeed\Plugnotas\Nfse\Servico\IbsCbs\Destinatario;
 use TecnoSpeed\Plugnotas\Nfse\Servico\IbsCbs\Imovel;
+use TecnoSpeed\Plugnotas\Nfse\Servico\IbsCbs\ReferenciaNFSe;
 use TecnoSpeed\Plugnotas\Nfse\Servico\IbsCbs\Valores;
 
 class IbsCbs extends BuilderAbstract
@@ -23,10 +24,16 @@ class IbsCbs extends BuilderAbstract
     /*
     * @var ReferenciaNFSe[]
     */
-    private ?array $referenciasNFSe = null;
+    private ?array $referenciasNFSe = [];
     private ?Destinatario $destinatario = null;
     private ?Imovel $imovel = null;
     private ?Valores $valores = null;
+
+
+    public function __construct()
+    {
+        $this->referenciasNFSe = [new ReferenciaNFSe()];
+    }
 
 
      public function getFinalidadeNFSe(): int
