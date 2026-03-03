@@ -9,6 +9,7 @@ use TecnoSpeed\Plugnotas\Configuration;
 use TecnoSpeed\Plugnotas\Error\RequiredError;
 use TecnoSpeed\Plugnotas\Error\ValidationError;
 use TecnoSpeed\Plugnotas\Interfaces\IDfe;
+use TecnoSpeed\Plugnotas\Nfse\BeneficioMunicipal\BeneficioMunicipal;
 use TecnoSpeed\Plugnotas\Nfse\CidadePrestacao;
 use TecnoSpeed\Plugnotas\Nfse\Impressao;
 use TecnoSpeed\Plugnotas\Nfse\Prestador;
@@ -45,6 +46,7 @@ class Nfse extends BuilderAbstract implements IDfe
     private $parcelas;
     private $informacoesComplementares;
     private $ativo;
+    private $beneficioMunicipal;
 
 
     public function setCidadePrestacao(CidadePrestacao $cidadePrestacao)
@@ -340,6 +342,10 @@ class Nfse extends BuilderAbstract implements IDfe
             $data['parcelas'] = Parcelas::fromArray($data['parcelas']);
         }
 
+        if (array_key_exists('beneficioMunicipal', $data)) {
+            $data['beneficioMunicipal'] = BeneficioMunicipal::fromArray($data['beneficioMunicipal']);
+        }
+
         return Hydrate::toObject(Nfse::class, $data);
     }
 
@@ -450,5 +456,16 @@ class Nfse extends BuilderAbstract implements IDfe
     {
         $communication = $this->getCallApiInstance($this->configuration);
         return $communication->send('GET', "/nfse/cancelar/status/${id}", null);
+    }
+
+    public function getBeneficioMunicipal()
+    {
+        return $this->beneficioMunicipal;
+    }
+
+    public function setBeneficioMunicipal($beneficioMunicipal): self
+    {
+        $this->beneficioMunicipal = $beneficioMunicipal;
+        return $this;
     }
 }
