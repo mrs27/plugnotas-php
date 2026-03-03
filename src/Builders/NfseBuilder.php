@@ -10,6 +10,7 @@ use TecnoSpeed\Plugnotas\Nfse\Rps;
 use TecnoSpeed\Plugnotas\Nfse\Servico;
 use TecnoSpeed\Plugnotas\Nfse\Tomador;
 use TecnoSpeed\Plugnotas\Error\InvalidTypeError;
+use TecnoSpeed\Plugnotas\Nfse\BeneficioMunicipal\BeneficioMunicipal;
 
 class NfseBuilder
 {
@@ -19,6 +20,7 @@ class NfseBuilder
     private $prestador;
     private $servico;
     private $impressao;
+    private $beneficioMunicipal;
 
     private function buildArrayServices($services, $class)
     {
@@ -83,6 +85,11 @@ class NfseBuilder
         return $this->callFromArray('cidadePrestacao', CidadePrestacao::class, $data);
     }
 
+    public function withBeneficioMunicipal($data)
+    {
+        return $this->callFromArray('beneficioMunicipal', BeneficioMunicipal::class, $data);
+    }
+
     public function build($data = [])
     {
         $nfse = Nfse::fromArray($data);
@@ -93,7 +100,8 @@ class NfseBuilder
             'prestador',
             'rps',
             'servico',
-            'tomador'
+            'tomador',
+            'beneficioMunicipal'
         ];
 
         foreach ($properties as $p) {
