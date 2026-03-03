@@ -11,25 +11,25 @@ class BeneficioMunicipal extends BuilderAbstract
 {
     use Communication;
 
-    private ?int $numero;
-    private ?Reducao $reducao;
+    private $numero;
+    private $reducao;
 
-    public function setNumero(?int $numero)
+    public function setNumero( $numero)
     {
         $this->numero = $numero;
     }
 
-    public function getNumero(): ?int
+    public function getNumero()
     {
         return $this->numero;
     }
 
-    public function setReducao(?Reducao $reducao)
+    public function setReducao(Reducao $reducao)
     {
         $this->reducao = $reducao;
     }
 
-    public function getReducao(): ?Reducao
+    public function getReducao()
     {
         return $this->reducao;
     }
