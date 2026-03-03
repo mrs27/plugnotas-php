@@ -2,7 +2,6 @@
 
 namespace TecnoSpeed\Plugnotas\Nfse\BeneficioMunicipal;
 
-use PhpParser\Node\Scalar\Float_;
 use TecnoSpeed\Plugnotas\Abstracts\BuilderAbstract;
 use TecnoSpeed\Plugnotas\Traits\Communication;
 

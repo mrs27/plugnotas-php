@@ -463,9 +463,8 @@ class Nfse extends BuilderAbstract implements IDfe
         return $this->beneficioMunicipal;
     }
 
-    public function setBeneficioMunicipal($beneficioMunicipal): self
+    public function setBeneficioMunicipal(BeneficioMunicipal $beneficioMunicipal)
     {
         $this->beneficioMunicipal = $beneficioMunicipal;
-        return $this;
     }
 }
